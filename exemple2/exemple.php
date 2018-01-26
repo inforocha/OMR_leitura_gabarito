@@ -5,7 +5,7 @@ require_once DOMAIN_PATH_OMR.'src/OpenOMR/PaperSheet/Field.php';
 require_once DOMAIN_PATH_OMR.'src/OpenOMR/PaperSheet/Mark.php';
 require_once DOMAIN_PATH_OMR.'src/OpenOMR/Reader/Reader.php';
 
-$paper = new PaperSheet(38, 54);
+$paper = new PaperSheet(38, 65);
 
 // identificador utilizado para cada questao
 $identificadorUnico = 1;
@@ -17,7 +17,7 @@ $letrasRespostas = array('A','B','C','D','E');
 
 // distancia entre o ponto inicial e final das questoes
 $pontoInicial = 49;
-$pontoFinal = 53;
+$pontoFinal = 63;
 // ponto da numeracao da questao - iremos pular a posicao do numero da questao. Utilizaremos somente os pontos das respostas
 $posicaoAtualDaLeitura = 0;
 
@@ -44,5 +44,5 @@ for ($colunaAtual = 1; $colunaAtual <= $qtdDeColunasRespostas; $colunaAtual++) {
 	}
 }
 
-$reader = new Reader('openomr.jpg', $paper, 4);
+$reader = new Reader('gabarito1.jpeg', $paper, 4);
 var_dump($reader->getResults());
