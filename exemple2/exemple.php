@@ -1,11 +1,20 @@
 <?php
+
 require_once '../constants.php';
 require_once DOMAIN_PATH_OMR.'src/OpenOMR/PaperSheet/PaperSheet.php';
 require_once DOMAIN_PATH_OMR.'src/OpenOMR/PaperSheet/Field.php';
 require_once DOMAIN_PATH_OMR.'src/OpenOMR/PaperSheet/Mark.php';
 require_once DOMAIN_PATH_OMR.'src/OpenOMR/Reader/Reader.php';
 
-$paper = new PaperSheet(38, 65);
+
+// tranformar a imagem em preto e branco
+$img = imagecreatefromjpeg('gabarito1.jpeg');
+imagefilter($img, IMG_FILTER_CONTRAST, -180);
+imagefilter($img, IMG_FILTER_GRAYSCALE);
+imagepng($img, 'utilizar.png');
+imagedestroy($img);
+
+$paper = new PaperSheet(38, 54);
 
 // identificador utilizado para cada questao
 $identificadorUnico = 1;
@@ -17,7 +26,7 @@ $letrasRespostas = array('A','B','C','D','E');
 
 // distancia entre o ponto inicial e final das questoes
 $pontoInicial = 49;
-$pontoFinal = 63;
+$pontoFinal = 53;
 // ponto da numeracao da questao - iremos pular a posicao do numero da questao. Utilizaremos somente os pontos das respostas
 $posicaoAtualDaLeitura = 0;
 
@@ -44,5 +53,6 @@ for ($colunaAtual = 1; $colunaAtual <= $qtdDeColunasRespostas; $colunaAtual++) {
 	}
 }
 
-$reader = new Reader('gabarito1.jpeg', $paper, 4);
+$reader = new Reader('utilizar.png', $paper, 4);
+echo '<pre>';
 var_dump($reader->getResults());
