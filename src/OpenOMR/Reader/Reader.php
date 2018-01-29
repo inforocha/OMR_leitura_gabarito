@@ -1,5 +1,5 @@
 <?php
-require_once '../../constants.php';
+require_once '../constants.php';
 require_once DOMAIN_PATH_OMR.'src/OpenOMR/Exception/ImagickExtensionNotFoundException.php';
 require_once DOMAIN_PATH_OMR.'src/OpenOMR/PaperSheet/PaperSheet.php';
 require_once DOMAIN_PATH_OMR.'src/OpenOMR/Reader/ScannedImage.php';
@@ -24,11 +24,11 @@ class Reader {
     public function getResults() {
         $imageToCompare = $this->createImageWithBlackBackground($this->scannedImage->getCellWidthForComparison(), $this->scannedImage->getCellHeightForComparison());
 
-        $result = [];
+        $result = array();
 
         foreach ($this->paperSheet as $field) {
             if (!isset($result[$field->getIdentifier()])) {
-                $result[$field->getIdentifier()] = ['status' => ReadingStatus::INITIAL, 'value' => '', 'error_margin' => 1];
+                $result[$field->getIdentifier()] = array('status' => ReadingStatus::INITIAL, 'value' => '', 'error_margin' => 1);
             }
 
             $fieldStatus = &$result[$field->getIdentifier()]['status'];

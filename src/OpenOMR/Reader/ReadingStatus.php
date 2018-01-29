@@ -1,5 +1,4 @@
 <?php
-require_once '../../constants.php';
 
 final class ReadingStatus {
 	static const INITIAL = 0;

@@ -1,5 +1,4 @@
 <?php
-require_once '../../constants.php';
 
 class ScannedImage extends Imagick
 {
@@ -25,7 +24,8 @@ class ScannedImage extends Imagick
     public function getCellWidth()
     {
         if (empty($this->cellWidth)) {
-            $this->cellWidth = $this->getGeometryInfo()['width'] / $this->matrixLength[0];
+            $info = $this->getGeometryInfo();
+            $this->cellWidth = $info['width'] / $this->matrixLength[0];
         }
 
         return $this->cellWidth;
@@ -43,7 +43,8 @@ class ScannedImage extends Imagick
     public function getCellHeight()
     {
         if (empty($this->cellHeight)) {
-            $this->cellHeight = $this->getGeometryInfo()['height'] / $this->matrixLength[1];
+            $info = $this->getGeometryInfo();
+            $this->cellHeight = $info['height'] / $this->matrixLength[1];
         }
 
         return $this->cellHeight;
@@ -71,9 +72,9 @@ class ScannedImage extends Imagick
         return $image;
     }
 
-    protected function getGeometryInfo()
-    {
-        return $this->identifyImage()['geometry'];
+    protected function getGeometryInfo() {
+        $identifyImage = $this->identifyImage();
+        return $identifyImage['geometry'];
     }
 
     protected function adaptImageForReading()

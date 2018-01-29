@@ -1,9 +1,8 @@
 <?php
-require_once '../../constants.php';
 
 class Field implements IteratorAggregate {
 	private $identifier;
-	private $marks = [];
+	private $marks = array();
 
 	public function __construct($identifier) {
 		$this->identifier = $identifier;

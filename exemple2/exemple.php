@@ -1,16 +1,28 @@
 <?php
 
-require_once '../constants.php';
-require_once DOMAIN_PATH_OMR.'src/OpenOMR/PaperSheet/PaperSheet.php';
-require_once DOMAIN_PATH_OMR.'src/OpenOMR/PaperSheet/Field.php';
-require_once DOMAIN_PATH_OMR.'src/OpenOMR/PaperSheet/Mark.php';
-require_once DOMAIN_PATH_OMR.'src/OpenOMR/Reader/Reader.php';
+// require_once '../constants.php';
+// require_once DOMAIN_PATH_OMR.'src/OpenOMR/PaperSheet/PaperSheet.php';
+// require_once DOMAIN_PATH_OMR.'src/OpenOMR/PaperSheet/Field.php';
+// require_once DOMAIN_PATH_OMR.'src/OpenOMR/PaperSheet/Mark.php';
+// require_once DOMAIN_PATH_OMR.'src/OpenOMR/Reader/Reader.php';
 
 
 // tranformar a imagem em preto e branco
 $img = imagecreatefromjpeg('gabarito1.jpeg');
 imagefilter($img, IMG_FILTER_CONTRAST, -180);
 imagefilter($img, IMG_FILTER_GRAYSCALE);
+
+// Aloca cores 
+// $pink = imagecolorallocate($img, 255, 105, 180);
+// $white = imagecolorallocate($img, 255, 255, 255);
+// $green = imagecolorallocate($img, 132, 135, 28);
+
+// // Desenha o retangulo com estas cores
+// //                   x    0x0  xtopo 
+// imagerectangle($img, 1550, 350, 450, 350, $pink);
+// // imagerectangle($img, 45, 60, 120, 100, $white);
+// imagerectangle($img, 100, 120, 75, 160, $green);
+
 imagepng($img, 'utilizar.png');
 imagedestroy($img);
 

@@ -1,12 +1,11 @@
 <?php
-require_once '../../constants.php';
 
 class PaperSheet implements IteratorAggregate {
-	private $matrixLength = [];
-	private $fields = [];
+	private $matrixLength = array();
+	private $fields = array();
 
 	public function __construct($x, $y) {
-		$this->matrixLength = [(int) $x, (int) $y];
+		$this->matrixLength = array((int) $x, (int) $y);
 	}
 
 	public function addField(Field $field) {
