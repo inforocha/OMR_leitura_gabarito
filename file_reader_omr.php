@@ -15,7 +15,7 @@
 
 		private $readings = array();
 		
-		function __construct(layout $layout) {
+		function __construct(LayoutOMR $layout) {
 			$this->init($layout);
 		}
 
@@ -59,8 +59,8 @@
 
 		private function init($layout) {
 			$paper = new PaperSheet($layout->getPaperWidth(), $layout->getPaperHeight());
-			$paper = $this->createFieldCode($paper);
-			$paper = $this->createFieldAnswers($paper);
+			$paper = $layout->createFieldCode($paper);
+			$paper = $layout->createFieldAnswers($paper);
 
 			$this->paper = $paper;
 		}
