@@ -1,9 +1,9 @@
 <?php
 require_once '../constants.php';
-require_once DOMAIN_PATH_OMR.'src/OpenOMR/PaperSheet/PaperSheet.php';
-require_once DOMAIN_PATH_OMR.'src/OpenOMR/PaperSheet/Field.php';
-require_once DOMAIN_PATH_OMR.'src/OpenOMR/PaperSheet/Mark.php';
-require_once DOMAIN_PATH_OMR.'src/OpenOMR/Reader/Reader.php';
+require_once DOMAIN_PATH_OMR.'core/orm/PaperSheet/PaperSheet.php';
+require_once DOMAIN_PATH_OMR.'core/orm/PaperSheet/Field.php';
+require_once DOMAIN_PATH_OMR.'core/orm/PaperSheet/Mark.php';
+require_once DOMAIN_PATH_OMR.'core/orm/Reader/Reader.php';
 
 $paper = new PaperSheet(38, 54);
 
@@ -85,4 +85,5 @@ for ($i = 31; $i <= 50; $i++) {
 }
 
 $reader = new Reader('openomr.jpg', $paper, 4);
+echo '<pre>';
 var_dump($reader->getResults());

@@ -1,10 +1,9 @@
-# openomr
+# omr
 
-credits:https://github.com/henricavalcante/openomr 
+creditos:https://github.com/henricavalcante/openomr 
 
 [![Build Status](https://travis-ci.org/henricavalcante/openomr.svg?branch=master)](https://travis-ci.org/henricavalcante/openomr)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/henricavalcante/openomr/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/henricavalcante/openomr/?branch=master)
 
 
-
-A PHP class to extract values from image scanned like optical mark recognition (OMR).
+Classe php para detectar marcações em uma imagem utilizando optical mark recognition (OMR).

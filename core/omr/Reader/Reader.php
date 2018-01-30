@@ -1,9 +1,9 @@
 <?php
-require_once '../constants.php';
-require_once DOMAIN_PATH_OMR.'src/OpenOMR/Exception/ImagickExtensionNotFoundException.php';
-require_once DOMAIN_PATH_OMR.'src/OpenOMR/PaperSheet/PaperSheet.php';
-require_once DOMAIN_PATH_OMR.'src/OpenOMR/Reader/ScannedImage.php';
-require_once DOMAIN_PATH_OMR.'src/OpenOMR/Reader/ReadingStatus.php';
+require_once '../../../constants.php';
+require_once DOMAIN_PATH_OMR.'core/orm/Exception/ImagickExtensionNotFoundException.php';
+require_once DOMAIN_PATH_OMR.'core/orm/PaperSheet/PaperSheet.php';
+require_once DOMAIN_PATH_OMR.'core/orm/Reader/ScannedImage.php';
+require_once DOMAIN_PATH_OMR.'core/orm/Reader/ReadingStatus.php';
 
 class Reader {
     private $paperSheet;
