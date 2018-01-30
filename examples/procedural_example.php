@@ -1,9 +1,9 @@
 <?php
 require_once '../constants.php';
-require_once DOMAIN_PATH_OMR.'core/orm/PaperSheet/PaperSheet.php';
-require_once DOMAIN_PATH_OMR.'core/orm/PaperSheet/Field.php';
-require_once DOMAIN_PATH_OMR.'core/orm/PaperSheet/Mark.php';
-require_once DOMAIN_PATH_OMR.'core/orm/Reader/Reader.php';
+require_once DOMAIN_PATH_OMR.'core/omr/PaperSheet/PaperSheet.php';
+require_once DOMAIN_PATH_OMR.'core/omr/PaperSheet/Field.php';
+require_once DOMAIN_PATH_OMR.'core/omr/PaperSheet/Mark.php';
+require_once DOMAIN_PATH_OMR.'core/omr/Reader/Reader.php';
 
 $paper = new PaperSheet(38, 54);
 
