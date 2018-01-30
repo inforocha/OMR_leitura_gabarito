@@ -108,3 +108,19 @@ if (!function_exists('convertImage')) {
 		imagedestroy($newImage);
 	}
 }
+
+if (!function_exists('forceDownloadFile')) {
+	function forceDownloadFile($pathFileName) {
+		header('Content-Description: File Transfer');
+		header('Content-Type: application/octet-stream');
+		header('Content-Disposition: attachment; filename='.basename($pathFileName));
+		header('Expires: 0');
+		header('Cache-Control: must-revalidate');
+		header('Pragma: public');
+		header('Content-Length: ' . filesize($pathFileName));
+		ob_clean();
+		flush();
+		readfile($pathFileName);
+		exit;
+	}
+}

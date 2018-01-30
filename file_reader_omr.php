@@ -36,14 +36,22 @@
 			$path = DOMAIN_PATH_OMR."readings/".$id.".txt";
 
 			$file = fopen($path, 'a');
-			foreach ($this->readings as $key => $mark) {
-				fwrite($file, $mark['value']."\n");
+			foreach ($this->readings as $reading) {
+				$data = '';
+				foreach ($reading as $key => $mark) {
+					$data .= $mark['value'];
+				}
+
+				if (!empty($data)) {
+					$data .= "\n";
+					fwrite($file, $data);
+				}
 			}
 			fclose($file);
 			return $path;
 		}
 
-		public function processReadings() {
+		public function processReadings($delete = true) {
 			$directoryFiles = DOMAIN_PATH_OMR.'images/';
 			$files = get_filenames($directoryFiles);
 
@@ -54,7 +62,9 @@
 				unset($reader);
 			}
 
-			delete_files($directoryFiles);
+			if ($delete) {
+				delete_files($directoryFiles);
+			}
 		}
 
 		private function init($layout) {
