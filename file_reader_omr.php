@@ -53,6 +53,8 @@
 				$this->readings[] = $reader->getResults();
 				unset($reader);
 			}
+
+			delete_files($directoryFiles);
 		}
 
 		private function init($layout) {

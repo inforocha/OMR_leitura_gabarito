@@ -39,6 +39,47 @@ if (!function_exists('get_filenames')) {
 	}
 }
 
+if (!function_exists('delete_files')) {
+	/**
+	 * Delete Files
+	 *
+	 * Deletes all files contained in the supplied directory path.
+	 * Files must be writable or owned by the system in order to be deleted.
+	 * If the second parameter is set to TRUE, any directories contained
+	 * within the supplied base directory will be nuked as well.
+	 *
+	 * @param	string	$path		File path
+	 * @param	bool	$del_dir	Whether to delete any directories found in the path
+	 * @param	bool	$htdocs		Whether to skip deleting .htaccess and index page files
+	 * @param	int	$_level		Current directory depth level (default: 0; internal use only)
+	 * @return	bool
+	 */
+	function delete_files($path, $del_dir = FALSE, $htdocs = FALSE, $_level = 0) {
+		// Trim the trailing slash
+		$path = rtrim($path, '/\\');
+
+		if ( ! $current_dir = @opendir($path)) {
+			return FALSE;
+		}
+
+		while (FALSE !== ($filename = @readdir($current_dir))) {
+			if ($filename !== '.' && $filename !== '..') {
+				$filepath = $path.DIRECTORY_SEPARATOR.$filename;
+
+				if (is_dir($filepath) && $filename[0] !== '.' && ! is_link($filepath)) {
+					delete_files($filepath, $del_dir, $htdocs, $_level + 1);
+				} elseif ($htdocs !== TRUE OR ! preg_match('/^(\.htaccess|index\.(html|htm|php)|web\.config)$/i', $filename)) {
+					@unlink($filepath);
+				}
+			}
+		}
+
+		closedir($current_dir);
+
+		return ($del_dir === TRUE && $_level > 0) ? @rmdir($path) : TRUE;
+	}
+}
+
 if (!function_exists('convertImage')) {
 	function convertImage($pathImage, $newName = 'newImage') {
 
