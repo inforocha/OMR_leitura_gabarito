@@ -26,7 +26,11 @@
 			die;
 		}
 
-		public function getReadings() {
+		public function getReadings($json = false) {
+			if ($json) {
+				return json_encode($json);
+			}
+
 			return $this->readings;
 		}
 
