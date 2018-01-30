@@ -1,5 +1,7 @@
 <?php
-require_once '../../../constants.php';
+if (!defined('DOMAIN_PATH_OMR')) {
+    require_once '../../../constants.php';
+}
 require_once DOMAIN_PATH_OMR.'core/omr/Exception/ImagickExtensionNotFoundException.php';
 require_once DOMAIN_PATH_OMR.'core/omr/PaperSheet/PaperSheet.php';
 require_once DOMAIN_PATH_OMR.'core/omr/Reader/ScannedImage.php';

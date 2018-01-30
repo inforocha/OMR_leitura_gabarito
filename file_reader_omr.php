@@ -1,11 +1,11 @@
 <?php
 
-	require_once '../constants.php';
+	require_once 'constants.php';
 	require_once DOMAIN_PATH_OMR.'core/helpers/file_helper.php';
-	require_once DOMAIN_PATH_OMR.'core/PaperSheet/PaperSheet.php';
-	require_once DOMAIN_PATH_OMR.'core/orm/PaperSheet/Field.php';
-	require_once DOMAIN_PATH_OMR.'core/orm/PaperSheet/Mark.php';
-	require_once DOMAIN_PATH_OMR.'core/orm/Reader/Reader.php';
+	require_once DOMAIN_PATH_OMR.'core/omr/PaperSheet/PaperSheet.php';
+	require_once DOMAIN_PATH_OMR.'core/omr/PaperSheet/Field.php';
+	require_once DOMAIN_PATH_OMR.'core/omr/PaperSheet/Mark.php';
+	require_once DOMAIN_PATH_OMR.'core/omr/Reader/Reader.php';
 	/**
 	* Responsavel por verificar os gabaristos que estao na pasta
 	* e criar um arquivo texto baseado em um objeto de Layout
